@@ -1,16 +1,22 @@
 {
 	"name": "arcavias/ext-cache-redis",
 	"description": "Arcavias cache-redis extension",
+	"homepage": "http://www.arcavias.com/en",
 	"type": "arcavias-extension",
-	"require": {
-		"arcavias/extension-installer": "dev-master",
+	"license": "LGPL-3.0",
+	"support": {
+		"source": "https://github.com/Arcavias/ext-cache-redis",
+		"issues": "https://github.com/Arcavias/ext-cache-redis",
+		"forum": "https://forum.arcavias.com",
+		"wiki": "https://docs.arcavias.com"
 	},
 	"require": {
+		"arcavias/extension-installer": "dev-master",
 		"predis/predis": "0.8.*"
-	}
+	},
 	"autoload": {
 		"psr-0": {
-			"MShop": "lib/custom/src",
+			"MAdmin": "lib/custom/src",
 			"MW": "lib/custom/src"
 		},
 		"classmap": [
