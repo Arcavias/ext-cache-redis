@@ -67,7 +67,7 @@ class MW_Cache_Redis
 	 */
 	public function deleteByTags( array $tags )
 	{
-		$result = array();
+		$result = $tagKeys = array();
 		$pipe = $this->_client->pipeline();
 
 		foreach( $tags as $tag )
@@ -77,9 +77,7 @@ class MW_Cache_Redis
 			$tagKeys[] = $tag;
 		}
 
-		$keyLists = $pipe->execute();
-
-		foreach( $keyLists as $keys )
+		foreach( $pipe->execute() as $keys )
 		{
 			foreach( $keys as $key ) {
 				$result[$key] = null;

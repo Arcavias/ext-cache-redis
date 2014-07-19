@@ -46,7 +46,7 @@ class MW_Cache_RedisTest extends MW_Unittest_Testcase
 	public function testDelete()
 	{
 		$this->_mock->expects( $this->once() )->method( 'del' )
-			->with( $this->equalTo( '1-test' ) );
+			->with( $this->equalTo( array( '1-test' ) ) );
 
 		$this->_object->delete( 'test' );
 	}
@@ -57,7 +57,7 @@ class MW_Cache_RedisTest extends MW_Unittest_Testcase
 		$this->_mock->expects( $this->once() )->method( 'del' )
 			->with( $this->equalTo( array( '1-test' ) ) );
 
-		$this->_object->delete( array( 'test' ) );
+		$this->_object->deleteList( array( 'test' ) );
 	}
 
 
@@ -69,10 +69,10 @@ class MW_Cache_RedisTest extends MW_Unittest_Testcase
 		$this->_mock->expects( $this->exactly( 2 ) )->method( 'smembers' );
 
 		$this->_mock->expects( $this->once() )->method( 'execute' )
-			->will( $this->returnValue( array( '1-tag:1' => array( '1-t:1', '1-t:2' ) ) ) );
+			->will( $this->returnValue( array( '1-tag:1' => array( '1-key:1', '1-key:2' ) ) ) );
 
 		$this->_mock->expects( $this->once() )->method( 'del' )
-			->with( $this->equalTo( array( '1-t:1', '1-t:2' ) ) );
+			->with( $this->equalTo( array( '1-key:1', '1-key:2', '1-tag:tag1', '1-tag:tag2' ) ) );
 
 		$this->_object->deleteByTags( array( 'tag1', 'tag2' ) );
 	}
