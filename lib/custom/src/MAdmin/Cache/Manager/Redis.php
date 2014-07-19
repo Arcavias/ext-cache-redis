@@ -19,7 +19,15 @@ class MAdmin_Cache_Manager_Redis
 	implements MAdmin_Cache_Manager_Interface
 {
 	private $_object;
-	private $_searchConfig = array();
+	private $_searchConfig = array(
+		'cache.id' => array(
+			'code' => 'cache.id',
+			'internalcode' => '"id"',
+			'label' => 'Cache ID',
+			'type' => 'string',
+			'internaltype' => MW_DB_Statement_Abstract::PARAM_STR,
+		),
+	);
 
 
 	/**
@@ -34,8 +42,11 @@ class MAdmin_Cache_Manager_Redis
 			$context = $this->_getContext();
 			$config = $context->getConfig();
 
+			$conn = $config->get( 'resource/cache/redis/connection' );
+			$conf = $config->get( 'resource/cache/redis', array() );
+
+			$client = new Predis\Client( $conn, $conf );
 			$conf = array( 'siteid' => $context->getLocale()->getSiteId() );
-			$client = new Predis\Client( $config->get( 'resource/cache/redis' ) );
 
 			$this->_object = MW_Cache_Factory::createManager( 'Redis', $conf, $client );
 		}
