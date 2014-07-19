@@ -6,7 +6,7 @@
 		"arcavias/extension-installer": "dev-master",
 	},
 	"require": {
-		"predis/predis": "0.8.*",
+		"predis/predis": "0.8.*"
 	}
 	"autoload": {
 		"psr-0": {
