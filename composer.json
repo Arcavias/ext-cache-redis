@@ -6,7 +6,7 @@
 	"license": "LGPL-3.0",
 	"support": {
 		"source": "https://github.com/Arcavias/ext-cache-redis",
-		"issues": "https://github.com/Arcavias/ext-cache-redis",
+		"issues": "https://github.com/Arcavias/ext-cache-redis/issues",
 		"forum": "https://forum.arcavias.com",
 		"wiki": "https://docs.arcavias.com"
 	},
