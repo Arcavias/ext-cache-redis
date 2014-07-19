@@ -1,0 +1,20 @@
+{
+	"name": "arcavias/ext-cache-redis",
+	"description": "Arcavias cache-redis extension",
+	"type": "arcavias-extension",
+	"require": {
+		"arcavias/extension-installer": "dev-master",
+	},
+	"require": {
+		"predis/predis": "0.8.*",
+	}
+	"autoload": {
+		"psr-0": {
+			"MShop": "lib/custom/src",
+			"MW": "lib/custom/src"
+		},
+		"classmap": [
+			"lib/custom/src"
+		]
+	}
+}
